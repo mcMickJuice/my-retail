@@ -1,9 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-
-const App = () => {
-  return <div>im the app!!!</div>
-}
+import App from './App'
 
 const mount = document.getElementById('mount')
 

@@ -7,7 +7,8 @@
   "scripts": {
     "start": "set NODE_ENV=development&&node main.js",
     "lint": "eslint **/*.js",
-    "build:prod": "set NODE_ENV=production&&webpack --config ./build/webpack.prod.js"
+    "build:prod": "set NODE_ENV=production&&webpack --config ./build/webpack.prod.js",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.15.3",
@@ -20,9 +21,12 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
     "eslint": "^4.2.0",
+    "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
+    "react-test-renderer": "^15.6.1",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.11.0",
