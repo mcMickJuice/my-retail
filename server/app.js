@@ -14,6 +14,7 @@ module.exports = (port, isDev, callback) => {
   const app = express()
   if (isDev) {
     //register route logging
+    const webpackMiddleware = require('../build/webpack-middleware')
 
     app.use((req, res, next) => {
       /* eslint-disable no-console */
@@ -24,6 +25,8 @@ module.exports = (port, isDev, callback) => {
 
       next()
     })
+
+    webpackMiddleware(app)
 
     //webpack dev middleware
   }
