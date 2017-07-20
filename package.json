@@ -10,6 +10,10 @@
     "build:prod": "set NODE_ENV=production&&webpack --config ./build/webpack.prod.js",
     "test": "jest"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "dependencies": {
     "express": "^4.15.3",
     "prop-types": "^15.5.10",
@@ -28,6 +32,7 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "open": "^0.0.5",
+    "pre-commit": "^1.2.2",
     "react-test-renderer": "^15.6.1",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.3.0",

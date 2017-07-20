@@ -7,7 +7,6 @@ module.exports = {
     'jest/globals': true
   },
   extends: ['eslint:recommended', 'plugin:react/recommended'],
-  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
