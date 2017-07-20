@@ -4,9 +4,10 @@ const dataService = require('./data-service')
 function webRouter(app) {
   app.use('/', express.static('public'))
 
-  app.get('/api', (req, res) => {
-    const result = dataService()
-    res.send(result)
+  app.get('/api/product', (req, res) => {
+    dataService().then(data => {
+      res.send(data)
+    })
   })
 }
 
@@ -18,9 +19,7 @@ module.exports = (port, isDev, callback) => {
 
     app.use((req, res, next) => {
       /* eslint-disable no-console */
-      console.log(__dirname)
       console.log(`Request made to: ${req.path}`)
-
       /*eslint-enable no-console */
 
       next()
