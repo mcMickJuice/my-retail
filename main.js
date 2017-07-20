@@ -12,4 +12,8 @@ server(port, isDev, err => {
 
   console.log(`App started at port ${port}`)
   /* eslint-enable no-console */
+  if (isDev) {
+    //auto open browser at specified port
+    require('open')(`http://localhost:${port}`)
+  }
 })
