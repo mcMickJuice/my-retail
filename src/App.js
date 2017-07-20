@@ -1,33 +1,43 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
+import { getProductData } from './data-service'
+import ProductScreen from './ProductScreen'
 
-const ProductScreen = styled.div`padding: 20px;`
+const Loading = styled.div`
+  text-align: center;
+  font-size: 24px;
+`
 
-//media query in here
-const MainSection = styled.div``
+class App extends Component {
+  constructor() {
+    super()
 
-//padding, etc here
-const Section = styled.div``
+    this.state = {
+      isLoading: true
+    }
+  }
 
-const App = () => {
-  return (
-    <ProductScreen>
-      <MainSection>
-        <Section>
-          <div>Product Title</div>
-          <div>Carousel</div>
-        </Section>
-        <Section>
-          <div>Price and offers!</div>
-          <div>Quantity and order widget</div>
-          <div>PRoduct highlights</div>
-        </Section>
-      </MainSection>
-      <Section>
-        <div>Product Reviews</div>
-      </Section>
-    </ProductScreen>
-  )
+  componentDidMount() {
+    this.setState(() => ({
+      isLoading: true
+    }))
+    getProductData().then(productData => {
+      this.setState(() => ({
+        isLoading: false,
+        productData
+      }))
+    })
+  }
+
+  render() {
+    const { isLoading, productData } = this.state
+
+    const toRender = isLoading
+      ? <Loading>Product Info Is Loading</Loading>
+      : <ProductScreen {...productData} />
+
+    return toRender
+  }
 }
 
 export default App
