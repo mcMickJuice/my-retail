@@ -2,6 +2,7 @@ import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
 import ImageCarousel from './ImageCarousel'
+import PriceInfo from './PriceInfo'
 
 const screenSizes = {
   desktop: 992,
@@ -26,20 +27,20 @@ const MainSection = styled.div`
 
 //padding, etc here
 const Section = styled.div`
-border: 1px solid black;
+border: 1px solbid black;
 padding: 10px;
 width: 100%`
 
-const ProductScreen = ({ images }) => {
+const ProductScreen = ({ images, title, priceInfo }) => {
   return (
     <ProductScreenContainer>
       <MainSection>
         <Section>
-          <div>Product Title</div>
+          <div>{title}</div>
           <ImageCarousel images={images}></ImageCarousel>
         </Section>
         <Section>
-          <div>Price and offers!</div>
+          <PriceInfo price={priceInfo.formattedPriceValue} priceQualifier={priceInfo.priceQualifier} />
           <div>Quantity and order widget</div>
           <div>PRoduct highlights</div>
         </Section>
