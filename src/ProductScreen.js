@@ -3,6 +3,8 @@ import * as T from 'prop-types'
 import styled from 'styled-components'
 import ImageCarousel from './ImageCarousel'
 import PriceInfo from './PriceInfo'
+import ProductHighlights from './ProductHighlights'
+import Rating from './Rating'
 
 const screenSizes = {
   desktop: 992,
@@ -11,42 +13,51 @@ const screenSizes = {
 }
 
 const ProductScreenContainer = styled.div`
-padding: 20px;
-max-width: ${screenSizes.desktop + 100}px;
-min-width: ${screenSizes.mobile}px;
-margin: auto;
+  padding: 20px;
+  max-width: ${screenSizes.desktop + 100}px;
+  min-width: ${screenSizes.mobile}px;
+  margin: auto;
 `
 
 //media query in here
 const MainSection = styled.div`
-@media screen and (min-width: ${screenSizes.tablet}px) {
-  display: flex;
-  justify-content: space-between;
-}
+  @media screen and (min-width: ${screenSizes.tablet}px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `
 
 //padding, etc here
 const Section = styled.div`
-border: 1px solbid black;
-padding: 10px;
-width: 100%`
+  border: 1px solbid black;
+  padding: 10px;
+  width: 100%;
+`
 
 const ProductScreen = ({ images, title, priceInfo }) => {
   return (
     <ProductScreenContainer>
       <MainSection>
         <Section>
-          <div>{title}</div>
-          <ImageCarousel images={images}></ImageCarousel>
+          <div>
+            {title}
+          </div>
+          <ImageCarousel images={images} />
         </Section>
         <Section>
-          <PriceInfo price={priceInfo.formattedPriceValue} priceQualifier={priceInfo.priceQualifier} />
+          <PriceInfo
+            price={priceInfo.formattedPriceValue}
+            priceQualifier={priceInfo.priceQualifier}
+          />
           <div>Quantity and order widget</div>
-          <div>PRoduct highlights</div>
+          <ProductHighlights />
         </Section>
       </MainSection>
       <Section>
-        <div>Product Reviews</div>
+        <div>
+          Product Reviews: <br />
+          <Rating rating={3} />
+        </div>
       </Section>
     </ProductScreenContainer>
   )
