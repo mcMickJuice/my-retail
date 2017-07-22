@@ -1,42 +1,125 @@
 import React, { Component } from 'react'
 import * as T from 'prop-types'
+import styled from 'styled-components';
+
+const CurrentImage = styled.img`
+  width: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+`;
+
+const ImageThumbnail = styled.img`width: 75px;`;
+
+const ImageThumbnailContainer = styled.div`
+  width: 80px;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    border: 1px solid black;
+  }
+  border: ${props => (props.isSelected ? '1px solid black' : '')};
+`;
+
+const getCircularImageIndex = (imagesLength, nextIdx) => {
+  let firstImageIdx = nextIdx % imagesLength;
+  return firstImageIdx < 0 ? imagesLength - 1 : firstImageIdx;
+};
+
+const getNextImageIndexes = (currentImageIndex, images) => {
+  const firstImageIdx = getCircularImageIndex(
+    images.length,
+    currentImageIndex - 1
+  );
+  const nextImageIdx = getCircularImageIndex(
+    images.length,
+    currentImageIndex + 1
+  );
+  return [firstImageIdx, currentImageIndex, nextImageIdx];
+};
 
 class ImageCarousel extends Component {
   constructor() {
-    super()
+    super();
+
+    this.navigateImage = this.navigateImage.bind(this);
+    this.selectImage = this.selectImage.bind(this);
 
     this.state = {
-      currentPhotoIndex: 0
-    }
+      currentImageIndex: 0
+    };
   }
 
-  navigateImage(isBackwards) {
-    this.setState((prevState, props) => {
-      const prevIndex = prevState.currentPhotoIndex
-      let nextIndex
-      if (isBackwards) {
-        nextIndex = Math.max(0, prevIndex - 1)
-      } else {
-        nextIndex = Math.min(props.images.length - 1, prevIndex + 1)
-      }
+  navigateImage(isForward) {
+    const { images } = this.props;
+    const step = isForward ? 1 : -1;
+    this.setState(prevState => {
+      const nextImgIdx = prevState.currentImageIndex + step;
       return {
-        currentPhotoIndex: nextIndex
-      }
-    })
+        currentImageIndex: getCircularImageIndex(images.length, nextImgIdx),
+      };
+    });
+  }
+
+  selectImage(image) {
+    const { images } = this.props;
+    const imageIdx = images.indexOf(image);
+    if (this.state.currentImageIndex === imageIdx) return;
+
+    this.setState(() => ({
+      currentImageIndex: imageIdx,
+    }));
   }
 
   render() {
+    const { images } = this.props;
+    const { currentImageIndex } = this.state;
+    const currentImage = images[currentImageIndex];
+
+    const previewImages = getNextImageIndexes(
+      currentImageIndex,
+      images
+    ).map(idx => {
+      const img = images[idx];
+      return (
+        <ImageThumbnailContainer
+          key={img}
+          isSelected={idx === currentImageIndex}
+        >
+          <ImageThumbnail
+            onClick={() => this.selectImage(img)}
+            src={img}
+            alt="Image Preview"
+          />
+        </ImageThumbnailContainer>
+      );
+    });
+
     return (
       <div>
-        <div>Current Image</div>
-        <div>All Images</div>
+        <div>
+          <CurrentImage
+            key={currentImage}
+            src={currentImage}
+            alt="Current Image"
+          />
+        </div>
+        <div>
+          {previewImages}
+        </div>
+
+        <button onClick={() => this.navigateImage(false)}>
+          Previous Image
+        </button>
+        <button onClick={() => this.navigateImage(true)}>Next Image</button>
       </div>
-    )
+    );
   }
 }
 
 ImageCarousel.propTypes = {
-  primaryImage: T.string.isRequired,
   images: T.arrayOf(T.string).isRequired
 }
 
