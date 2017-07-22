@@ -12,15 +12,17 @@ const CurrentImage = styled.img`
 const ImageThumbnail = styled.img`width: 75px;`;
 
 const ImageThumbnailContainer = styled.div`
-  width: 80px;
+  width: 100px;
   padding: 5px;
   margin-right: 10px;
   cursor: pointer;
   display: inline-block;
+  border-width: 1px;
+  border-style: solid;
   &:hover {
-    border: 1px solid black;
-  }
-  border: ${props => (props.isSelected ? '1px solid black' : '')};
+    border-color: black;
+  };
+  border-color: ${props => (props.isSelected ? 'black' : 'transparent')};
 `;
 
 const getCircularImageIndex = (imagesLength, nextIdx) => {

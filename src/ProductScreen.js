@@ -1,8 +1,9 @@
 import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
+import ImageCarousel from './ImageCarousel'
 
-const ProductScreen = styled.div`padding: 20px;`
+const ProductScreenContainer = styled.div`padding: 20px;`
 
 //media query in here
 const MainSection = styled.div``
@@ -10,13 +11,13 @@ const MainSection = styled.div``
 //padding, etc here
 const Section = styled.div``
 
-function productScreenFactory() {
+const ProductScreen = ({ images }) => {
   return (
-    <ProductScreen>
+    <ProductScreenContainer>
       <MainSection>
         <Section>
           <div>Product Title</div>
-          <div>Carousel</div>
+          <ImageCarousel images={images}></ImageCarousel>
         </Section>
         <Section>
           <div>Price and offers!</div>
@@ -27,11 +28,11 @@ function productScreenFactory() {
       <Section>
         <div>Product Reviews</div>
       </Section>
-    </ProductScreen>
+    </ProductScreenContainer>
   )
 }
 
-productScreenFactory.propTypes = {
+ProductScreen.propTypes = {
   title: T.string.isRequired,
   images: T.arrayOf(T.string).isRequired,
   priceInfo: T.shape({
@@ -40,4 +41,4 @@ productScreenFactory.propTypes = {
   }).isRequired
 }
 
-export default productScreenFactory
+export default ProductScreen

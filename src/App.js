@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import { getProductData } from './data-service'
 import ProductScreen from './ProductScreen'
+
+injectGlobal`
+* {
+  box-sizing: border-box
+}`
 
 const Loading = styled.div`
   text-align: center;
