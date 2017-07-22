@@ -5,8 +5,6 @@ import styled from 'styled-components';
 const CurrentImage = styled.img`
   width: 300px;
   padding: 10px;
-  border: 1px solid black;
-  border-radius: 4px;
 `;
 
 const ImageThumbnail = styled.img`width: 75px;`;
@@ -93,7 +91,7 @@ class ImageCarousel extends Component {
           <ImageThumbnail
             onClick={() => this.selectImage(img)}
             src={img}
-            alt="Image Preview"
+            alt={`Image Thumbnail ${idx}`}
           />
         </ImageThumbnailContainer>
       );
