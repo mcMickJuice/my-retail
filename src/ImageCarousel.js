@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import * as T from 'prop-types'
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 const CurrentImage = styled.img`
   width: 300px;
   padding: 10px;
-`;
+`
 
-const ImageThumbnail = styled.img`width: 75px;`;
+const ImageThumbnail = styled.img`width: 75px;`
 
 const ImageThumbnailContainer = styled.div`
   width: 100px;
@@ -19,70 +27,70 @@ const ImageThumbnailContainer = styled.div`
   border-style: solid;
   &:hover {
     border-color: black;
-  };
+  }
   border-color: ${props => (props.isSelected ? 'black' : 'transparent')};
-`;
+`
 
 const getCircularImageIndex = (imagesLength, nextIdx) => {
-  let firstImageIdx = nextIdx % imagesLength;
-  return firstImageIdx < 0 ? imagesLength - 1 : firstImageIdx;
-};
+  let firstImageIdx = nextIdx % imagesLength
+  return firstImageIdx < 0 ? imagesLength - 1 : firstImageIdx
+}
 
 const getNextImageIndexes = (currentImageIndex, images) => {
   const firstImageIdx = getCircularImageIndex(
     images.length,
     currentImageIndex - 1
-  );
+  )
   const nextImageIdx = getCircularImageIndex(
     images.length,
     currentImageIndex + 1
-  );
-  return [firstImageIdx, currentImageIndex, nextImageIdx];
-};
+  )
+  return [firstImageIdx, currentImageIndex, nextImageIdx]
+}
 
 class ImageCarousel extends Component {
   constructor() {
-    super();
+    super()
 
-    this.navigateImage = this.navigateImage.bind(this);
-    this.selectImage = this.selectImage.bind(this);
+    this.navigateImage = this.navigateImage.bind(this)
+    this.selectImage = this.selectImage.bind(this)
 
     this.state = {
       currentImageIndex: 0
-    };
+    }
   }
 
   navigateImage(isForward) {
-    const { images } = this.props;
-    const step = isForward ? 1 : -1;
+    const { images } = this.props
+    const step = isForward ? 1 : -1
     this.setState(prevState => {
-      const nextImgIdx = prevState.currentImageIndex + step;
+      const nextImgIdx = prevState.currentImageIndex + step
       return {
-        currentImageIndex: getCircularImageIndex(images.length, nextImgIdx),
-      };
-    });
+        currentImageIndex: getCircularImageIndex(images.length, nextImgIdx)
+      }
+    })
   }
 
   selectImage(image) {
-    const { images } = this.props;
-    const imageIdx = images.indexOf(image);
-    if (this.state.currentImageIndex === imageIdx) return;
+    const { images } = this.props
+    const imageIdx = images.indexOf(image)
+    if (this.state.currentImageIndex === imageIdx) return
 
     this.setState(() => ({
-      currentImageIndex: imageIdx,
-    }));
+      currentImageIndex: imageIdx
+    }))
   }
 
   render() {
-    const { images } = this.props;
-    const { currentImageIndex } = this.state;
-    const currentImage = images[currentImageIndex];
+    const { images } = this.props
+    const { currentImageIndex } = this.state
+    const currentImage = images[currentImageIndex]
 
     const previewImages = getNextImageIndexes(
       currentImageIndex,
       images
     ).map(idx => {
-      const img = images[idx];
+      const img = images[idx]
       return (
         <ImageThumbnailContainer
           key={img}
@@ -94,11 +102,11 @@ class ImageCarousel extends Component {
             alt={`Image Thumbnail ${idx}`}
           />
         </ImageThumbnailContainer>
-      );
-    });
+      )
+    })
 
     return (
-      <div>
+      <Container>
         <div>
           <CurrentImage
             key={currentImage}
@@ -114,8 +122,8 @@ class ImageCarousel extends Component {
           Previous Image
         </button>
         <button onClick={() => this.navigateImage(true)}>Next Image</button>
-      </div>
-    );
+      </Container>
+    )
   }
 }
 

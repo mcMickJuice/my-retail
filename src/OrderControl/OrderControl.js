@@ -41,6 +41,7 @@ const ReturnInfo = styled.div`
     border-right: 1px solid ${lightgray};
   }
   & > div:last-child {
+    padding-left: 10px;
     font-size: 12px;
   }
 `
