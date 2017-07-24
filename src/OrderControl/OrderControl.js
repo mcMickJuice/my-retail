@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import * as T from 'prop-types'
 import styled from 'styled-components'
 import { lightgray, red } from '../colors'
 import QuantityControl from './QuantityControl'
@@ -9,7 +10,7 @@ const OrderControlContainer = styled.div`
   }
 `
 
-const OrderButton = styled.button`
+export const OrderButton = styled.button`
   cursor: pointer;
   border: 1px solid ${props => props.color || 'black'};
   background-color: ${props => props.color || 'black'};
@@ -89,6 +90,12 @@ class OrderControl extends Component {
 
   render() {
     const { orderCount } = this.state
+    const { purchasingChannelCode } = this.props
+
+    const showAddToCart =
+      purchasingChannelCode == 0 || purchasingChannelCode == 1
+    const showPickUpInStore =
+      purchasingChannelCode == 0 || purchasingChannelCode == 2
     return (
       <OrderControlContainer>
         <QuantityControl
@@ -97,8 +104,8 @@ class OrderControl extends Component {
           decrement={this.onCountDecrement}
         />
         <OrderButtonContainer>
-          <OrderButton>Pick up in Store</OrderButton>
-          <OrderButton color={red}>Add To Cart</OrderButton>
+          {showPickUpInStore && <OrderButton>Pick up in Store</OrderButton>}
+          {showAddToCart && <OrderButton color={red}>Add To Cart</OrderButton>}
         </OrderButtonContainer>
         <ReturnInfo>
           <div>returns</div>
@@ -118,6 +125,10 @@ class OrderControl extends Component {
       </OrderControlContainer>
     )
   }
+}
+
+OrderControl.propTypes = {
+  purchasingChannelCode: T.number.isRequired
 }
 
 export default OrderControl
