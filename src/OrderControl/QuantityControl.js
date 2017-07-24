@@ -1,7 +1,7 @@
 import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
-import { lightgray } from '../../colors'
+import { lightgray } from '../colors'
 
 const Container = styled.div`
   width: 48%;
