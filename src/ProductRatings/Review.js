@@ -11,6 +11,8 @@ const Title = styled.h4`font-weight: 600;`
 const ReviewText = styled.p`
   font-size: 12px;
   color: ${darkgray};
+  line-height: 18px;
+  margin-bottom: 5px;
 `
 
 const Review = ({ rating, reviewTitle, review, reviewer, date }) => {
@@ -23,9 +25,9 @@ const Review = ({ rating, reviewTitle, review, reviewer, date }) => {
       <ReviewText>
         {review}
       </ReviewText>
-      <div>
+      <ReviewText>
         <a href="#">{reviewer}</a> {date}
-      </div>
+      </ReviewText>
     </Container>
   )
 }

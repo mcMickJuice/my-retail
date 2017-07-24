@@ -2,24 +2,40 @@ import React from 'react'
 import styled from 'styled-components'
 import Rating from './Rating'
 import Review from './Review'
-import { lightgray } from '../colors'
+import { lightgray, darkgray } from '../colors'
 
 const Container = styled.div``
 
 const RatingHeader = styled.div`
   padding: 0 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  & > div > strong {
+    margin-left: 10px;
+  }
 `
 
 const RatingBody = styled.div`
   background-color: ${lightgray};
   min-height: 200px;
-  padding: 10px;
+  padding: 15px;
   display: flex;
 `
 
 const RatingColumn = styled.div`width: 50%;`
+const RatingColumnHeader = styled.div`
+  border-bottom: 1px solid ${darkgray};
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  & > div:first-child {
+    text-transform: uppercase;
+  }
+  & > div:last-child {
+    font-size: 12px;
+    color: ${darkgray};
+  }
+`
 
 const proReviewText =
   'This blender works amazingly, and blends within seconds. The single serve cups also work really well for smoothies or protein shakes'
@@ -62,11 +78,17 @@ const ProductRatings = () => {
       </RatingHeader>
       <RatingBody>
         <RatingColumn>
-          <div>PRO</div>
+          <RatingColumnHeader>
+            <div>Pro</div>
+            <div>most helpful 4-5 star review</div>
+          </RatingColumnHeader>
           {proReview}
         </RatingColumn>
         <RatingColumn>
-          <div>CON</div>
+          <RatingColumnHeader>
+            <div>Con</div>
+            <div>most helpful 1-2 star review</div>
+          </RatingColumnHeader>
           {conReview}
         </RatingColumn>
       </RatingBody>
