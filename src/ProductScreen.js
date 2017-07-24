@@ -35,7 +35,7 @@ const Section = styled.div`
   width: 100%;
 `
 
-const ProductScreen = ({ images, title, priceInfo }) => {
+const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
   return (
     <ProductScreenContainer>
       <MainSection>
@@ -50,7 +50,7 @@ const ProductScreen = ({ images, title, priceInfo }) => {
             price={priceInfo.formattedPriceValue}
             priceQualifier={priceInfo.priceQualifier}
           />
-          <OrderControl />
+          <OrderControl purchasingChannelCode={purchasingChannelCode} />
           <ProductHighlights />
         </Section>
       </MainSection>
@@ -70,7 +70,8 @@ ProductScreen.propTypes = {
   priceInfo: T.shape({
     formattedPriceValue: T.string.isRequired,
     priceQualifier: T.string.isRequired
-  }).isRequired
+  }).isRequired,
+  purchasingChannelCode: T.number.isRequired
 }
 
 export default ProductScreen

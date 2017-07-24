@@ -103,10 +103,12 @@ class OrderControl extends Component {
           increment={this.onCountIncrement}
           decrement={this.onCountDecrement}
         />
-        <OrderButtonContainer>
-          {showPickUpInStore && <OrderButton>Pick up in Store</OrderButton>}
-          {showAddToCart && <OrderButton color={red}>Add To Cart</OrderButton>}
-        </OrderButtonContainer>
+        {(showAddToCart || showPickUpInStore) &&
+          <OrderButtonContainer>
+            {showPickUpInStore && <OrderButton>Pick up in Store</OrderButton>}
+            {showAddToCart &&
+              <OrderButton color={red}>Add To Cart</OrderButton>}
+          </OrderButtonContainer>}
         <ReturnInfo>
           <div>returns</div>
           <div>

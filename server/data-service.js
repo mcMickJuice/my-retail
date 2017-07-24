@@ -2,7 +2,8 @@ const itemData = require('./item-data.json')
 
 function getProductData() {
   const firstProduct = itemData.CatalogEntryView[0]
-  const title = firstProduct.title
+  const { title, purchasingChannelCode } = firstProduct
+  const purchasingChannelCodeNumber = Number(purchasingChannelCode)
   const imageObject = firstProduct.Images[0]
   const images = [
     ...imageObject.PrimaryImage,
@@ -16,6 +17,7 @@ function getProductData() {
 
   return Promise.resolve({
     title,
+    purchasingChannelCode: purchasingChannelCodeNumber,
     images,
     priceInfo: {
       formattedPriceValue,
