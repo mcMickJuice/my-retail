@@ -24,6 +24,7 @@ const QuantityButton = styled.button.attrs({
 `
 
 const QuantityCount = styled.span`
+  font-weight: 600;
   margin: 0 10px;
   user-select: none;
 `

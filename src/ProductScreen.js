@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import ImageCarousel from './ImageCarousel'
 import PriceInfo from './PriceInfo'
 import ProductHighlights from './ProductHighlights'
-import Rating from './Rating'
 import OrderControl from './OrderControl'
+import ProductRatings from './ProductRatings'
 
 const screenSizes = {
   desktop: 992,
@@ -55,10 +55,7 @@ const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
         </Section>
       </MainSection>
       <Section>
-        <div>
-          Product Reviews: <br />
-          <Rating rating={3} />
-        </div>
+        <ProductRatings />
       </Section>
     </ProductScreenContainer>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { darkgray } from '../colors'
 
 const highlights = [
   'Wattage Output: 1100 Watts',
@@ -23,7 +24,7 @@ const HighlightTitle = styled.h3`
 const HighlightList = styled.ul`list-style-type: disc;`
 
 const Highlight = styled.li`
-  color: gray;
+  color: ${darkgray};
   font-size: 13px;
 `
 

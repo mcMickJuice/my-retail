@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
-import { lightgray, red } from '../colors'
+import { lightgray, darkgray, red } from '../colors'
 import QuantityControl from './QuantityControl'
 
 const OrderControlContainer = styled.div`
@@ -30,7 +30,7 @@ const OrderButtonContainer = styled.div`
 `
 
 const ReturnInfo = styled.div`
-  color: ${lightgray};
+  color: ${darkgray};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,6 +48,7 @@ const ReturnInfo = styled.div`
 
 const SecondaryButton = styled.button`
   cursor: pointer;
+  color: ${darkgray};
   border: none;
   background-color: ${lightgray};
   text-transform: uppercase;

@@ -1,6 +1,7 @@
 import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
+import { darkgray } from '../colors'
 
 const Price = styled.span`
   font-weight: 600;
@@ -9,7 +10,7 @@ const Price = styled.span`
 `
 
 const PriceQualifier = styled.span`
-  color: gray;
+  color: ${darkgray};
   font-size: 10px;
 `
 
