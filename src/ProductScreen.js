@@ -5,6 +5,7 @@ import ImageCarousel from './ImageCarousel'
 import PriceInfo from './PriceInfo'
 import ProductHighlights from './ProductHighlights'
 import Rating from './Rating'
+import OrderControl from './OrderControl'
 
 const screenSizes = {
   desktop: 992,
@@ -49,7 +50,7 @@ const ProductScreen = ({ images, title, priceInfo }) => {
             price={priceInfo.formattedPriceValue}
             priceQualifier={priceInfo.priceQualifier}
           />
-          <div>Quantity and order widget</div>
+          <OrderControl />
           <ProductHighlights />
         </Section>
       </MainSection>
