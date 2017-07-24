@@ -4,6 +4,10 @@ import { getProductData } from './data-service'
 import ProductScreen from './ProductScreen'
 
 injectGlobal`
+strong {
+  font-weight: 600;
+}
+
 * {
   box-sizing: border-box
 }`

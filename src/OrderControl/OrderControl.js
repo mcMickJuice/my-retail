@@ -113,7 +113,7 @@ class OrderControl extends Component {
           <div>returns</div>
           <div>
             This item must be returned within 30 days of the ship date. See
-            <strong>return policy</strong> for details.
+            <strong> return policy</strong> for details.
             <br />
             Prices, promotions, styles and availability may vary by store and
             online.
