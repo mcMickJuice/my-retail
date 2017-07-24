@@ -13,7 +13,7 @@ const Star = styled.i.attrs({
 
 const Rating = ({ rating }) => {
   const stars = Array.from({ length: maxRating }).map((i, idx) => {
-    return <Star key={i} isRated={idx + 1 <= rating} />
+    return <Star key={idx} isRated={idx + 1 <= rating} />
   })
 
   return (

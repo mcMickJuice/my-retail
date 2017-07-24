@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { lightgray, red } from './colors'
+import { lightgray, red } from '../colors'
+import QuantityControl from './QuantityControl'
 
 const OrderControlContainer = styled.div`
   & > * {
@@ -8,11 +9,6 @@ const OrderControlContainer = styled.div`
   }
 `
 
-const QuantityControl = styled.div`
-  width: 48%;
-  border: 1px solid ${lightgray};
-  padding: 5px;
-`
 const OrderButton = styled.button`
   cursor: pointer;
   border: 1px solid ${props => props.color || 'black'};
@@ -64,8 +60,6 @@ const SecondaryButtons = styled.div`
   }
 `
 
-//Pick up in store
-//add to cart
 class OrderControl extends Component {
   constructor() {
     super()
@@ -94,9 +88,14 @@ class OrderControl extends Component {
   }
 
   render() {
+    const { orderCount } = this.state
     return (
       <OrderControlContainer>
-        <QuantityControl />
+        <QuantityControl
+          quantity={orderCount}
+          increment={this.onCountIncrement}
+          decrement={this.onCountDecrement}
+        />
         <OrderButtonContainer>
           <OrderButton>Pick up in Store</OrderButton>
           <OrderButton color={red}>Add To Cart</OrderButton>
@@ -105,8 +104,10 @@ class OrderControl extends Component {
           <div>returns</div>
           <div>
             This item must be returned within 30 days of the ship date. See
-            <strong>return policy</strong> for details.<br /> Prices,
-            promotions, styles and availability may vary by store and online.
+            <strong>return policy</strong> for details.
+            <br />
+            Prices, promotions, styles and availability may vary by store and
+            online.
           </div>
         </ReturnInfo>
         <SecondaryButtons>
