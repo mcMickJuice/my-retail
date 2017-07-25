@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { red, darkgray } from '../colors'
+import { red, mediumgray } from '../colors'
 
 const Container = styled.ul`
   color: ${red};
   padding: 10px 0;
-  border-top: 2px solid ${darkgray};
-  border-bottom: 2px solid ${darkgray};
+  border-top: 1px solid ${mediumgray};
+  border-bottom: 1px solid ${mediumgray};
 `
 
 const productOffers = [
@@ -15,20 +15,23 @@ const productOffers = [
 ]
 
 const ProductOffer = styled.li`
-  line-height: 20px;
   font-size: 16px;
-  & > span:first-child {
+  display: flex;
+  & > div:first-child {
     font-size: 20px;
-    margin-right: 10px;
+    margin-right: 8px;
+  }
+  & > div:last-child {
+    line-height: 20px;
   }
 `
 
 const productOfferElements = productOffers.map(p =>
   <ProductOffer key={p}>
-    <span className="icon-tag" />
-    <span>
+    <div className="icon-tag" />
+    <div>
       {p}
-    </span>
+    </div>
   </ProductOffer>
 )
 

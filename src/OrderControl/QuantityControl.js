@@ -1,11 +1,11 @@
 import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
-import { lightgray } from '../colors'
+import { mediumgray } from '../colors'
 
 const Container = styled.div`
   width: 48%;
-  border: 1px solid ${lightgray};
+  border: 1px solid ${mediumgray};
   border-radius: 4px;
   padding: 3px 8px;
   display: flex;
@@ -20,7 +20,7 @@ const QuantityButton = styled.button.attrs({
   color: white;
   border-radius: 50%;
   padding: 10px;
-  background-color: ${lightgray};
+  background-color: ${mediumgray};
 `
 
 const QuantityCount = styled.span`
