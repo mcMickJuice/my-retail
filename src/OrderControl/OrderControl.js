@@ -12,7 +12,7 @@ const Container = styled.div`
 `
 
 const gradients = {
-  red: `linear-gradient(to top, ${red}, #ce1a21 70%, #de6365)`,
+  [red]: `linear-gradient(to top, ${red}, #ce1a21 70%, #de6365)`,
   black: 'linear-gradient(to top, black, #191616 70%, #585858)'
 }
 
@@ -138,7 +138,7 @@ class OrderControl extends Component {
                 Pick up in Store
               </OrderButton>}
             {showAddToCart &&
-              <OrderButton color="red">Add To Cart</OrderButton>}
+              <OrderButton color={red}>Add To Cart</OrderButton>}
           </OrderButtonContainer>}
         <ReturnInfo>
           <div>returns</div>
