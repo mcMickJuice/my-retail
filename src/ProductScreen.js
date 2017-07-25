@@ -7,12 +7,7 @@ import ProductHighlights from './ProductHighlights'
 import OrderControl from './OrderControl'
 import ProductRatings from './ProductRatings'
 import ProductOffers from './ProductOffers'
-
-const screenSizes = {
-  desktop: 992,
-  tablet: 768,
-  mobile: 480
-}
+import * as screenSizes from './screenSizes'
 
 const ProductScreenContainer = styled.div`
   padding: 20px;

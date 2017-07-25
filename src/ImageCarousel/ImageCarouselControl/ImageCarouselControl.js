@@ -2,13 +2,29 @@ import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
 import { getCircularImageIndex } from '../arrayHelpers'
+import { mediumgray } from '../../colors'
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 export const ThumbnailButton = styled.button.attrs({
   className: props =>
     props.backwards ? 'icon-chevron-left' : 'icon-chevron-right'
-})``
+})`
+background: none;cursor: pointer;  
+border: none;
+display:block;
+font-size: 36px;
+color: ${mediumgray}
+`
 
-export const ImageThumbnail = styled.img`width: 75px;`
+export const ImageThumbnail = styled.img`
+  width: 75px;
+  display: block;
+  margin: auto;
+`
 
 const ImageThumbnailContainer = styled.div`
   width: 100px;
@@ -18,10 +34,11 @@ const ImageThumbnailContainer = styled.div`
   display: inline-block;
   border-width: 1px;
   border-style: solid;
+  border-radius: 5px;
   &:hover {
-    border-color: black;
+    border-color: ${mediumgray};
   }
-  border-color: ${props => (props.isSelected ? 'black' : 'transparent')};
+  border-color: ${props => (props.isSelected ? mediumgray : 'transparent')};
 `
 
 const getNextImageIndexes = (currentImageIndex, images) => {
@@ -60,11 +77,11 @@ const ImageCarouselControl = ({
   })
 
   return (
-    <div>
+    <Container>
       <ThumbnailButton onClick={navigateBack} backwards />
       {previewImages}
       <ThumbnailButton onClick={navigateForward} />
-    </div>
+    </Container>
   )
 }
 

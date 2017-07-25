@@ -3,6 +3,7 @@ import * as T from 'prop-types'
 import styled from 'styled-components'
 import ImageCarouselControl from './ImageCarouselControl'
 import { getCircularImageIndex } from './arrayHelpers'
+import ViewLarger from './ViewLarger'
 
 const Container = styled.div`
   width: 100%;
@@ -13,8 +14,8 @@ const Container = styled.div`
 `
 
 const CurrentImage = styled.img`
-  width: 300px;
-  padding: 10px;
+  padding: 16px;
+  margin-bottom: 40px;
 `
 
 class ImageCarousel extends Component {
@@ -69,13 +70,12 @@ class ImageCarousel extends Component {
 
     return (
       <Container>
-        <div>
-          <CurrentImage
-            key={currentImage}
-            src={currentImage}
-            alt="Current Image"
-          />
-        </div>
+        <CurrentImage
+          key={currentImage}
+          src={currentImage}
+          alt="Current Image"
+        />
+        <ViewLarger />
         <ImageCarouselControl
           images={images}
           currentImageIndex={currentImageIndex}
