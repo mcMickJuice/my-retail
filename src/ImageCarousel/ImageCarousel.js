@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
+import ImageCarouselControl from './ImageCarouselControl'
+import { getCircularImageIndex } from './arrayHelpers'
 
 const Container = styled.div`
   width: 100%;
@@ -15,44 +17,12 @@ const CurrentImage = styled.img`
   padding: 10px;
 `
 
-const ImageThumbnail = styled.img`width: 75px;`
-
-const ImageThumbnailContainer = styled.div`
-  width: 100px;
-  padding: 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  display: inline-block;
-  border-width: 1px;
-  border-style: solid;
-  &:hover {
-    border-color: black;
-  }
-  border-color: ${props => (props.isSelected ? 'black' : 'transparent')};
-`
-
-const getCircularImageIndex = (imagesLength, nextIdx) => {
-  let firstImageIdx = nextIdx % imagesLength
-  return firstImageIdx < 0 ? imagesLength - 1 : firstImageIdx
-}
-
-const getNextImageIndexes = (currentImageIndex, images) => {
-  const firstImageIdx = getCircularImageIndex(
-    images.length,
-    currentImageIndex - 1
-  )
-  const nextImageIdx = getCircularImageIndex(
-    images.length,
-    currentImageIndex + 1
-  )
-  return [firstImageIdx, currentImageIndex, nextImageIdx]
-}
-
 class ImageCarousel extends Component {
   constructor() {
     super()
 
-    this.navigateImage = this.navigateImage.bind(this)
+    this.onNavigateBack = this.onNavigateBack.bind(this)
+    this.onNavigateForward = this.onNavigateForward.bind(this)
     this.selectImage = this.selectImage.bind(this)
 
     this.state = {
@@ -60,9 +30,20 @@ class ImageCarousel extends Component {
     }
   }
 
-  navigateImage(isForward) {
+  onNavigateBack() {
     const { images } = this.props
-    const step = isForward ? 1 : -1
+    const step = -1
+    this.setState(prevState => {
+      const nextImgIdx = prevState.currentImageIndex + step
+      return {
+        currentImageIndex: getCircularImageIndex(images.length, nextImgIdx)
+      }
+    })
+  }
+
+  onNavigateForward() {
+    const { images } = this.props
+    const step = 1
     this.setState(prevState => {
       const nextImgIdx = prevState.currentImageIndex + step
       return {
@@ -86,25 +67,6 @@ class ImageCarousel extends Component {
     const { currentImageIndex } = this.state
     const currentImage = images[currentImageIndex]
 
-    const previewImages = getNextImageIndexes(
-      currentImageIndex,
-      images
-    ).map(idx => {
-      const img = images[idx]
-      return (
-        <ImageThumbnailContainer
-          key={img}
-          isSelected={idx === currentImageIndex}
-        >
-          <ImageThumbnail
-            onClick={() => this.selectImage(img)}
-            src={img}
-            alt={`Image Thumbnail ${idx}`}
-          />
-        </ImageThumbnailContainer>
-      )
-    })
-
     return (
       <Container>
         <div>
@@ -114,14 +76,12 @@ class ImageCarousel extends Component {
             alt="Current Image"
           />
         </div>
-        <div>
-          {previewImages}
-        </div>
-
-        <button onClick={() => this.navigateImage(false)}>
-          Previous Image
-        </button>
-        <button onClick={() => this.navigateImage(true)}>Next Image</button>
+        <ImageCarouselControl
+          images={images}
+          currentImageIndex={currentImageIndex}
+          navigateBack={this.onNavigateBack}
+          navigateForward={this.onNavigateForward}
+        />
       </Container>
     )
   }
