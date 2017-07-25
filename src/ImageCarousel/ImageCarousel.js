@@ -23,7 +23,7 @@ class ImageCarousel extends Component {
 
     this.onNavigateBack = this.onNavigateBack.bind(this)
     this.onNavigateForward = this.onNavigateForward.bind(this)
-    this.selectImage = this.selectImage.bind(this)
+    this.onSelectImage = this.onSelectImage.bind(this)
 
     this.state = {
       currentImageIndex: 0
@@ -52,7 +52,7 @@ class ImageCarousel extends Component {
     })
   }
 
-  selectImage(image) {
+  onSelectImage(image) {
     const { images } = this.props
     const imageIdx = images.indexOf(image)
     if (this.state.currentImageIndex === imageIdx) return
@@ -81,6 +81,7 @@ class ImageCarousel extends Component {
           currentImageIndex={currentImageIndex}
           navigateBack={this.onNavigateBack}
           navigateForward={this.onNavigateForward}
+          selectImage={this.onSelectImage}
         />
       </Container>
     )

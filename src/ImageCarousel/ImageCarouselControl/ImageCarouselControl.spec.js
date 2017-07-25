@@ -15,6 +15,7 @@ describe('ImageCarouselControl', () => {
         currentImageIndex={1}
         navigateBack={jest.fn()}
         navigateForward={jest.fn()}
+        selectImage={jest.fn()}
       />
     )
     const thumbnails = element.find(ImageThumbnail).nodes
@@ -31,6 +32,7 @@ describe('ImageCarouselControl', () => {
         currentImageIndex={0}
         navigateBack={jest.fn()}
         navigateForward={jest.fn()}
+        selectImage={jest.fn()}
       />
     )
     const thumbnails = element.find(ImageThumbnail).nodes
@@ -46,6 +48,7 @@ describe('ImageCarouselControl', () => {
         currentImageIndex={0}
         navigateBack={mockNavigateBack}
         navigateForward={jest.fn()}
+        selectImage={jest.fn()}
       />
     )
 
@@ -63,6 +66,7 @@ describe('ImageCarouselControl', () => {
         currentImageIndex={0}
         navigateBack={jest.fn()}
         navigateForward={mockNavigateForward}
+        selectImage={jest.fn()}
       />
     )
 
@@ -71,5 +75,24 @@ describe('ImageCarouselControl', () => {
     navigateBackButton.nodes[1].props.onClick()
 
     expect(mockNavigateForward).toHaveBeenCalled()
+  })
+
+  test('should call selectImage if ThumbnailImage is clicked', () => {
+    const mockSelectImage = jest.fn()
+    const element = shallow(
+      <ImageCarouselControl
+        images={images}
+        currentImageIndex={1}
+        navigateBack={jest.fn()}
+        navigateForward={jest.fn()}
+        selectImage={mockSelectImage}
+      />
+    )
+
+    const thumbnails = element.find(ImageThumbnail).nodes
+
+    thumbnails[0].props.onClick()
+
+    expect(mockSelectImage).toHaveBeenCalledWith(images[0])
   })
 })

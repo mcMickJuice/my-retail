@@ -40,7 +40,8 @@ const ImageCarouselControl = ({
   images,
   currentImageIndex,
   navigateBack,
-  navigateForward
+  navigateForward,
+  selectImage
 }) => {
   const previewImages = getNextImageIndexes(
     currentImageIndex,
@@ -50,7 +51,7 @@ const ImageCarouselControl = ({
     return (
       <ImageThumbnailContainer key={img} isSelected={idx === currentImageIndex}>
         <ImageThumbnail
-          onClick={() => this.selectImage(img)}
+          onClick={() => selectImage(img)}
           src={img}
           alt={`Image Thumbnail ${idx}`}
         />
@@ -71,7 +72,8 @@ ImageCarouselControl.propTypes = {
   images: T.arrayOf(T.string).isRequired,
   currentImageIndex: T.number.isRequired,
   navigateBack: T.func.isRequired,
-  navigateForward: T.func.isRequired
+  navigateForward: T.func.isRequired,
+  selectImage: T.func.isRequired
 }
 
 export default ImageCarouselControl
