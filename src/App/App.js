@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { getProductData } from './data-service'
-import ProductScreen from './ProductScreen'
-import injectGlobalStyles from './globalStyles'
+import { getProductData } from '../data-service'
+import ProductScreen from '../ProductScreen'
+import injectGlobalStyles from '../globalStyles'
 
 injectGlobalStyles()
 

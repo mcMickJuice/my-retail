@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
 import ImageCarouselControl from './ImageCarouselControl'
-import { getCircularImageIndex } from './arrayHelpers'
+import { getCircularBufferIndex } from './arrayHelpers'
 import ViewLarger from './ViewLarger'
 import { CSSTransitionGroup } from 'react-transition-group'
 import { mobile } from '../screenSizes'
@@ -51,7 +51,7 @@ class ImageCarousel extends Component {
     this.setState(prevState => {
       const nextImgIdx = prevState.currentImageIndex + step
       return {
-        currentImageIndex: getCircularImageIndex(images.length, nextImgIdx)
+        currentImageIndex: getCircularBufferIndex(images.length, nextImgIdx)
       }
     })
   }
@@ -62,7 +62,7 @@ class ImageCarousel extends Component {
     this.setState(prevState => {
       const nextImgIdx = prevState.currentImageIndex + step
       return {
-        currentImageIndex: getCircularImageIndex(images.length, nextImgIdx)
+        currentImageIndex: getCircularBufferIndex(images.length, nextImgIdx)
       }
     })
   }

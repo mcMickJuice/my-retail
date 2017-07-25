@@ -1,7 +1,7 @@
 import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
-import { getCircularImageIndex } from '../arrayHelpers'
+import { getCircularBufferIndex } from '../arrayHelpers'
 import { mediumgray } from '../../colors'
 import { mobile } from '../../screenSizes'
 
@@ -48,11 +48,11 @@ const ImageThumbnailContainer = styled.div`
 `
 
 const getNextImageIndexes = (currentImageIndex, images) => {
-  const firstImageIdx = getCircularImageIndex(
+  const firstImageIdx = getCircularBufferIndex(
     images.length,
     currentImageIndex - 1
   )
-  const nextImageIdx = getCircularImageIndex(
+  const nextImageIdx = getCircularBufferIndex(
     images.length,
     currentImageIndex + 1
   )

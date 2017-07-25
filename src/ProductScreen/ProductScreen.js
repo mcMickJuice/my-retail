@@ -1,13 +1,13 @@
 import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
-import ImageCarousel from './ImageCarousel'
-import PriceInfo from './PriceInfo'
-import ProductHighlights from './ProductHighlights'
-import OrderControl from './OrderControl'
-import ProductRatings from './ProductRatings'
-import ProductOffers from './ProductOffers'
-import * as screenSizes from './screenSizes'
+import ImageCarousel from '../ImageCarousel'
+import PriceInfo from '../PriceInfo'
+import ProductHighlights from '../ProductHighlights'
+import OrderControl from '../OrderControl'
+import ProductRatings from '../ProductRatings'
+import ProductOffers from '../ProductOffers'
+import * as screenSizes from '../screenSizes'
 
 const Container = styled.div`
   padding: 20px;
