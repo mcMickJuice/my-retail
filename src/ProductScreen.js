@@ -6,6 +6,7 @@ import PriceInfo from './PriceInfo'
 import ProductHighlights from './ProductHighlights'
 import OrderControl from './OrderControl'
 import ProductRatings from './ProductRatings'
+import ProductOffers from './ProductOffers'
 
 const screenSizes = {
   desktop: 992,
@@ -50,6 +51,7 @@ const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
             price={priceInfo.formattedPriceValue}
             priceQualifier={priceInfo.priceQualifier}
           />
+          <ProductOffers />
           <OrderControl purchasingChannelCode={purchasingChannelCode} />
           <ProductHighlights />
         </Section>

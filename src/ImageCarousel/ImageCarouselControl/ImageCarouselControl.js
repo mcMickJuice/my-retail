@@ -5,7 +5,7 @@ import { getCircularImageIndex } from '../arrayHelpers'
 
 export const ThumbnailButton = styled.button.attrs({
   className: props =>
-    props.backwards ? 'icon-arrow-left2' : 'icon-arrow-right2'
+    props.backwards ? 'icon-chevron-left' : 'icon-chevron-right'
 })``
 
 export const ImageThumbnail = styled.img`width: 75px;`
