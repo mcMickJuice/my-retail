@@ -11,10 +11,15 @@ const Container = styled.div`
   }
 `
 
+const gradients = {
+  red: `linear-gradient(to top, ${red}, #ce1a21 70%, #de6365)`,
+  black: 'linear-gradient(to top, black, #191616 70%, #585858)'
+}
+
 export const OrderButton = styled.button`
   cursor: pointer;
   border: 1px solid ${props => props.color || 'black'};
-  background-color: ${props => props.color || 'black'};
+  background: ${props => gradients[props.color || 'black']};
   text-transform: uppercase;
   color: white;
   font-size: 16px;
@@ -133,7 +138,7 @@ class OrderControl extends Component {
                 Pick up in Store
               </OrderButton>}
             {showAddToCart &&
-              <OrderButton color={red}>Add To Cart</OrderButton>}
+              <OrderButton color="red">Add To Cart</OrderButton>}
           </OrderButtonContainer>}
         <ReturnInfo>
           <div>returns</div>
