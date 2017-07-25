@@ -6,12 +6,17 @@ import { darkgray } from '../colors'
 
 const Container = styled.div``
 
-const Title = styled.h4`font-weight: 600;`
+const Title = styled.h4`
+  font-weight: 600;
+  font-size: 13px;
+  margin: 5px 0;
+`
 
 const ReviewText = styled.p`
   font-size: 12px;
   color: ${darkgray};
   line-height: 18px;
+  padding-right: 5px;
   margin-bottom: 5px;
 `
 

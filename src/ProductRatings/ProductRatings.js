@@ -8,11 +8,16 @@ const Container = styled.div``
 
 const RatingHeader = styled.div`
   padding: 0 10px;
+  font-size: 13px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
-  & > div > strong {
-    margin-left: 10px;
+  line-height: 24px;
+  font-weight: 600;
+  & > *:first-child {
+    margin-right: 10px;
+  }
+  & > *:last-child {
+    margin-left: auto;
   }
 `
 
@@ -68,13 +73,9 @@ const ProductRatings = () => {
   return (
     <Container>
       <RatingHeader>
-        <div>
-          <Rating rating={5} large />
-          <strong>overall</strong>
-        </div>
-        <div>
-          <strong>view all 14 reviews</strong>
-        </div>
+        <Rating rating={5} large />
+        <div>overall</div>
+        <div>view all 14 reviews</div>
       </RatingHeader>
       <RatingBody>
         <RatingColumn>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
 import { lightgray, mediumgray, darkgray, red } from '../colors'
+import { tablet } from '../screenSizes'
 import QuantityControl from './QuantityControl'
 
 const Container = styled.div`
@@ -20,6 +21,8 @@ export const OrderButton = styled.button`
   padding: 8px 0;
   border-radius: 4px;
   position: relative;
+   
+
   &::after {
     content: '${props => props.after || ''}';
     position: absolute;
@@ -30,7 +33,12 @@ export const OrderButton = styled.button`
     left: 0;
     font-size: 12px;
     width: 100%;
+    display: none;
+    @media screen and (min-width: ${tablet}px) {
+      display: block;
+    }
   }
+  
 `
 
 const OrderButtonContainer = styled.div`

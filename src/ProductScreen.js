@@ -9,7 +9,7 @@ import ProductRatings from './ProductRatings'
 import ProductOffers from './ProductOffers'
 import * as screenSizes from './screenSizes'
 
-const ProductScreenContainer = styled.div`
+const Container = styled.div`
   padding: 20px;
   max-width: ${screenSizes.desktop + 100}px;
   min-width: ${screenSizes.tinymobile}px;
@@ -51,7 +51,7 @@ const SectionTabletOrBigger = Section.extend`
 
 const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
   return (
-    <ProductScreenContainer>
+    <Container>
       <MainSection>
         <Section>
           <Title>
@@ -75,7 +75,7 @@ const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
       <SectionMobile>
         <ProductRatings />
       </SectionMobile>
-    </ProductScreenContainer>
+    </Container>
   )
 }
 

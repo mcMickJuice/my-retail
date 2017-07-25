@@ -11,6 +11,10 @@ export default () => {
     font-family: 'Open Sans', sans-sarif
   }
 
+  a {
+    text-decoration: none;
+  }
+
   * {
     box-sizing: border-box;
     font-size: 14px;
