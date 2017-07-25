@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ImageCarouselControl from './ImageCarouselControl'
 import { getCircularImageIndex } from './arrayHelpers'
 import ViewLarger from './ViewLarger'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 const Container = styled.div`
   width: 100%;
@@ -16,6 +17,13 @@ const Container = styled.div`
 const CurrentImage = styled.img`
   padding: 16px;
   margin-bottom: 40px;
+  &.fade-enter {
+    opacity: 0.01;
+  }
+  &.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
 `
 
 class ImageCarousel extends Component {
@@ -70,11 +78,17 @@ class ImageCarousel extends Component {
 
     return (
       <Container>
-        <CurrentImage
-          key={currentImage}
-          src={currentImage}
-          alt="Current Image"
-        />
+        <CSSTransitionGroup
+          transitionName="fade"
+          transitionEnterTimeout={500}
+          transitionLeave={false}
+        >
+          <CurrentImage
+            key={currentImage}
+            src={currentImage}
+            alt="Current Image"
+          />
+        </CSSTransitionGroup>
         <ViewLarger />
         <ImageCarouselControl
           images={images}
