@@ -31,14 +31,20 @@ const Section = styled.div`
   width: 100%;
 `
 
+const Title = styled.h1`
+  font-weight: 300;
+  font-size: 28px;
+  text-align: center;
+`
+
 const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
   return (
     <ProductScreenContainer>
       <MainSection>
         <Section>
-          <div>
+          <Title>
             {title}
-          </div>
+          </Title>
           <ImageCarousel images={images} />
         </Section>
         <Section>
