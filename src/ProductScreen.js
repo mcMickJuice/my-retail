@@ -12,7 +12,7 @@ import * as screenSizes from './screenSizes'
 const ProductScreenContainer = styled.div`
   padding: 20px;
   max-width: ${screenSizes.desktop + 100}px;
-  min-width: ${screenSizes.mobile}px;
+  min-width: ${screenSizes.tinymobile}px;
   margin: auto;
 `
 

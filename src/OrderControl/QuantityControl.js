@@ -2,15 +2,23 @@ import React from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
 import { mediumgray } from '../colors'
+import { desktop, tablet, mobile } from '../screenSizes'
 
 const Container = styled.div`
-  width: 48%;
   border: 1px solid ${mediumgray};
   border-radius: 4px;
   padding: 3px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  @media screen and (min-width: ${desktop}px) {
+    width: 48%;
+  }
+
+  @media screen and (min-width: ${mobile}px) and (max-width: ${tablet}px) {
+    width: 48%;
+  }
 `
 const QuantityButton = styled.button.attrs({
   className: props => (props.isPlus ? 'icon-plus' : 'icon-minus')
