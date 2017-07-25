@@ -16,16 +16,20 @@ const highlights = [
 ]
 
 const HighlightTitle = styled.h3`
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 500;
   margin-bottom: 20px;
 `
 
-const HighlightList = styled.ul`list-style-type: disc;`
+const HighlightList = styled.ul`
+  list-style-type: disc;
+  margin-left: 16px;
+`
 
 const Highlight = styled.li`
   color: ${darkgray};
   font-size: 13px;
+  line-height: 20px;
 `
 
 const highlightElements = highlights.map(h =>

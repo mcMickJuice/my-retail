@@ -12,6 +12,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  font-size: 13px;
   @media screen and (min-width: ${desktop}px) {
     width: 48%;
   }
@@ -33,6 +34,7 @@ const QuantityButton = styled.button.attrs({
 
 const QuantityCount = styled.span`
   font-weight: 600;
+  font-size: 15px;
   margin: 0 10px;
   user-select: none;
 `

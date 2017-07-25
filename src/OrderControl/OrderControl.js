@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import * as T from 'prop-types'
 import styled from 'styled-components'
-import { lightgray, darkgray, red } from '../colors'
+import { lightgray, mediumgray, darkgray, red } from '../colors'
 import QuantityControl from './QuantityControl'
 
-const OrderControlContainer = styled.div`
+const Container = styled.div`
   & > * {
-    margin: 25px 0;
+    margin: 30px 0;
   }
 `
 
@@ -18,7 +18,19 @@ export const OrderButton = styled.button`
   color: white;
   font-size: 16px;
   padding: 8px 0;
-  border-radius: 3px;
+  border-radius: 4px;
+  position: relative;
+  &::after {
+    content: '${props => props.after || ''}';
+    position: absolute;
+    color: black;
+    bottom: -18px;
+    font-weight: 700;
+    text-transform: lowercase;
+    left: 0;
+    font-size: 12px;
+    width: 100%;
+  }
 `
 
 const OrderButtonContainer = styled.div`
@@ -36,18 +48,19 @@ const ReturnInfo = styled.div`
   align-items: center;
 
   & > div:first-child {
-    font-size: 20px;
+    font-size: 16px;
     padding: 5px 10px 5px 0;
-    border-right: 1px solid ${lightgray};
+    border-right: 1px solid ${mediumgray};
   }
   & > div:last-child {
     padding-left: 10px;
-    font-size: 12px;
+    font-size: 10px;
   }
 `
 
 const SecondaryButton = styled.button`
   cursor: pointer;
+  font-size: 12px;
   color: ${darkgray};
   border: none;
   background-color: ${lightgray};
@@ -99,7 +112,7 @@ class OrderControl extends Component {
     const showPickUpInStore =
       purchasingChannelCode == 0 || purchasingChannelCode == 2
     return (
-      <OrderControlContainer>
+      <Container>
         <QuantityControl
           quantity={orderCount}
           increment={this.onCountIncrement}
@@ -107,7 +120,10 @@ class OrderControl extends Component {
         />
         {(showAddToCart || showPickUpInStore) &&
           <OrderButtonContainer>
-            {showPickUpInStore && <OrderButton>Pick up in Store</OrderButton>}
+            {showPickUpInStore &&
+              <OrderButton after={'find in a store'}>
+                Pick up in Store
+              </OrderButton>}
             {showAddToCart &&
               <OrderButton color={red}>Add To Cart</OrderButton>}
           </OrderButtonContainer>}
@@ -126,7 +142,7 @@ class OrderControl extends Component {
           <SecondaryButton>Add to List</SecondaryButton>
           <SecondaryButton>Share</SecondaryButton>
         </SecondaryButtons>
-      </OrderControlContainer>
+      </Container>
     )
   }
 }

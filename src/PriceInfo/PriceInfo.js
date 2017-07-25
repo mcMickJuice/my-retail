@@ -3,6 +3,8 @@ import * as T from 'prop-types'
 import styled from 'styled-components'
 import { darkgray } from '../colors'
 
+const Container = styled.div`margin-bottom: 25px;`
+
 const Price = styled.span`
   font-weight: 600;
   font-size: 24px;
@@ -16,14 +18,14 @@ const PriceQualifier = styled.span`
 
 const PriceInfo = ({ price, priceQualifier }) => {
   return (
-    <div>
+    <Container>
       <Price>
         {price}
       </Price>
       <PriceQualifier>
         {priceQualifier}
       </PriceQualifier>
-    </div>
+    </Container>
   )
 }
 
