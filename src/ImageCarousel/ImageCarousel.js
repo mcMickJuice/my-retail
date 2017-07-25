@@ -5,6 +5,7 @@ import ImageCarouselControl from './ImageCarouselControl'
 import { getCircularImageIndex } from './arrayHelpers'
 import ViewLarger from './ViewLarger'
 import { CSSTransitionGroup } from 'react-transition-group'
+import { mobile } from '../screenSizes'
 
 const Container = styled.div`
   width: 100%;
@@ -17,6 +18,11 @@ const Container = styled.div`
 const CurrentImage = styled.img`
   padding: 16px;
   margin-bottom: 40px;
+  margin: auto;
+  display: block;
+  @media screen and (max-width: ${mobile}px) {
+    width: 80%;
+  }
   &.fade-enter {
     opacity: 0.01;
   }

@@ -26,7 +26,6 @@ const MainSection = styled.div`
 
 //padding, etc here
 const Section = styled.div`
-  border: 1px solbid black;
   padding: 10px;
   width: 100%;
 `
@@ -35,6 +34,19 @@ const Title = styled.h1`
   font-weight: 300;
   font-size: 28px;
   text-align: center;
+`
+//hack to get ProductRatings to move positioning based on screen sizes...
+//could probably figure this out with flex ordering
+const SectionMobile = Section.extend`
+  @media screen and (min-width: ${screenSizes.tablet}px) {
+    display: none;
+  }
+`
+
+const SectionTabletOrBigger = Section.extend`
+  @media screen and (max-width: ${screenSizes.tablet}px) {
+    display: none;
+  }
 `
 
 const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
@@ -46,6 +58,9 @@ const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
             {title}
           </Title>
           <ImageCarousel images={images} />
+          <SectionTabletOrBigger>
+            <ProductRatings />
+          </SectionTabletOrBigger>
         </Section>
         <Section>
           <PriceInfo
@@ -57,9 +72,9 @@ const ProductScreen = ({ images, title, priceInfo, purchasingChannelCode }) => {
           <ProductHighlights />
         </Section>
       </MainSection>
-      <Section>
+      <SectionMobile>
         <ProductRatings />
-      </Section>
+      </SectionMobile>
     </ProductScreenContainer>
   )
 }

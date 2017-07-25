@@ -3,6 +3,7 @@ import * as T from 'prop-types'
 import styled from 'styled-components'
 import { getCircularImageIndex } from '../arrayHelpers'
 import { mediumgray } from '../../colors'
+import { mobile } from '../../screenSizes'
 
 const Container = styled.div`
   display: flex;
@@ -17,7 +18,10 @@ background: none;cursor: pointer;
 border: none;
 display:block;
 font-size: 36px;
-color: ${mediumgray}
+color: ${mediumgray};
+@media screen and (max-width: ${mobile}px) {
+  display: none;
+}
 `
 
 export const ImageThumbnail = styled.img`
@@ -29,7 +33,9 @@ export const ImageThumbnail = styled.img`
 const ImageThumbnailContainer = styled.div`
   width: 100px;
   padding: 5px;
-  margin-right: 10px;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
   cursor: pointer;
   display: inline-block;
   border-width: 1px;
