@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import Rating from './Rating'
 import { darkgray } from '../colors'
 
-const Container = styled.div``
-
 const Title = styled.h4`
   font-weight: 600;
   font-size: 13px;
@@ -22,7 +20,7 @@ const ReviewText = styled.p`
 
 const Review = ({ rating, reviewTitle, review, reviewer, date }) => {
   return (
-    <Container>
+    <div>
       <Rating rating={rating} />
       <Title>
         {reviewTitle}
@@ -33,7 +31,7 @@ const Review = ({ rating, reviewTitle, review, reviewer, date }) => {
       <ReviewText>
         <a href="#">{reviewer}</a> {date}
       </ReviewText>
-    </Container>
+    </div>
   )
 }
 

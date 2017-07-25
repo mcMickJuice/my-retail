@@ -4,8 +4,6 @@ import Rating from './Rating'
 import Review from './Review'
 import { lightgray, darkgray } from '../colors'
 
-const Container = styled.div``
-
 const RatingHeader = styled.div`
   padding: 0 10px;
   font-size: 13px;
@@ -71,7 +69,7 @@ const conReview = (
 
 const ProductRatings = () => {
   return (
-    <Container>
+    <div>
       <RatingHeader>
         <Rating rating={5} large />
         <div>overall</div>
@@ -93,7 +91,7 @@ const ProductRatings = () => {
           {conReview}
         </RatingColumn>
       </RatingBody>
-    </Container>
+    </div>
   )
 }
 

@@ -9,6 +9,7 @@ injectGlobalStyles()
 const Loading = styled.div`
   text-align: center;
   font-size: 24px;
+  margin-top: 36px;
 `
 
 class App extends Component {
