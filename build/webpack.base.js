@@ -4,7 +4,7 @@ const srcDir = path.resolve(__dirname, '../src')
 
 module.exports = {
   entry: {
-    app: [path.join(srcDir, 'index.js')]
+    app: ['babel-polyfill', path.join(srcDir, 'index.js')]
   },
   output: {
     path: path.resolve(__dirname, '../public/dist'),
